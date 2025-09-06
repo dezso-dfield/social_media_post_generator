@@ -1,0 +1,140 @@
+# sites.yaml
+# Tip: You can add per-site overrides later (e.g., custom content selectors).
+sites:
+  # -------------------------
+  # AI — news, research, policy
+  # -------------------------
+  - name: The Verge — AI
+    start_url: https://www.theverge.com/ai-artificial-intelligence
+    link_selector: "a[href*='/ai-'], a[href*='/ai/']"
+    limit: 6
+    topic: ai
+
+  - name: MIT News — AI
+    start_url: https://news.mit.edu/topic/artificial-intelligence2
+    link_selector: "a.card--title-link, a[href*='/news/']"
+    limit: 4
+    topic: ai
+
+  - name: Google DeepMind Blog
+    start_url: https://www.deepmind.com/blog
+    link_selector: "a[href*='/blog/']"
+    limit: 4
+    topic: ai
+
+  - name: Meta AI Blog
+    start_url: https://ai.meta.com/blog/
+    link_selector: "a[href*='/blog/']"
+    limit: 4
+    topic: ai
+
+  - name: Microsoft Research Blog — AI
+    start_url: https://www.microsoft.com/en-us/research/blog/
+    link_selector: "a.entry-title-link, a[href*='/research/blog/']"
+    limit: 4
+    topic: ai
+
+  - name: EU Commission — Digital / AI
+    start_url: https://digital-strategy.ec.europa.eu/en/news
+    link_selector: "a[href*='/en/news/'], a.card__title a"
+    limit: 6
+    topic: ai
+
+  - name: Euractiv — Tech & AI
+    start_url: https://www.euractiv.com/sections/digital/
+    link_selector: "a[href*='/section/digital/'], .c-article-list a.c-article-item__title"
+    limit: 6
+    topic: ai
+
+  - name: Hungarian AI Coalition (Mesterséges Intelligencia Koalíció)
+    start_url: https://ai-hungary.com/hu/hirek
+    link_selector: "a[href*='/hu/hirek/'], .views-field-title a"
+    limit: 4
+    topic: ai
+
+  # -------------------------
+  # Blockchain — market, policy (MiCA), enterprise rails
+  # -------------------------
+  - name: CoinDesk — Front Page
+    start_url: https://www.coindesk.com/
+    link_selector: "a[href*='/business/'], a[href*='/policy/'], a.card-title"
+    limit: 6
+    topic: blockchain
+
+  - name: The Block — News
+    start_url: https://www.theblock.co/latest
+    link_selector: "a[href*='/post/'], a[href*='/article/']"
+    limit: 6
+    topic: blockchain
+
+  - name: EU Commission — Financial Services (MiCA updates)
+    start_url: https://finance.ec.europa.eu/news_en
+    link_selector: "a[href*='/news/'], .ecl-link.ecl-link--standalone"
+    limit: 6
+    topic: blockchain
+
+  - name: ECB Blog / Newsroom (Digital Euro & crypto policy)
+    start_url: https://www.ecb.europa.eu/press/html/index.en.html
+    link_selector: "a[href*='/press/'], a[href*='/blog/']"
+    limit: 6
+    topic: blockchain
+
+  - name: Magyar Nemzeti Bank (MNB) — Hírek
+    start_url: https://www.mnb.hu/hu/sajtoszoba/sajtokozlemenyek
+    link_selector: ".news-list a, a[href*='/sajtokozlemenyek/']"
+    limit: 6
+    topic: blockchain
+
+  # -------------------------
+  # Cybersecurity — incidents, CVEs, NIS2, EU regs
+  # -------------------------
+  - name: The Hacker News
+    start_url: https://thehackernews.com/
+    link_selector: "a.story-link, a[href*='/202']"
+    limit: 6
+    topic: cybersecurity
+
+  - name: Dark Reading
+    start_url: https://www.darkreading.com/
+    link_selector: "a[href*='/attacks-breaches'], a[href*='/vulnerabilities-threats']"
+    limit: 6
+    topic: cybersecurity
+
+  - name: Krebs on Security
+    start_url: https://krebsonsecurity.com/
+    link_selector: "h2.entry-title a, a[href*='/20']"
+    limit: 4
+    topic: cybersecurity
+
+  - name: ENISA (EU Agency for Cybersecurity) — News
+    start_url: https://www.enisa.europa.eu/news
+    link_selector: "a[href*='/news/']"
+    limit: 6
+    topic: cybersecurity
+
+  - name: NIST — News (standards & guidance)
+    start_url: https://www.nist.gov/news-events/news
+    link_selector: "a[href*='/news/']"
+    limit: 6
+    topic: cybersecurity
+
+  - name: CERT-Hungary (Gov-CERT) — News/Alerts
+    start_url: https://govcert.hu/
+    link_selector: "a[href*='/hirek'], a[href*='/figyelmeztetesek']"
+    limit: 4
+    topic: cybersecurity
+
+  # -------------------------
+  # Cross-topic — standards, policy analysis
+  # -------------------------
+  - name: OECD — AI/Cyber/Policy
+    start_url: https://www.oecd.org/digital/
+    link_selector: "a[href*='/digital/'], .oecd-news-list a"
+    limit: 4
+    topic: ai
+
+  - name: Bruegel — Digital & Innovation (policy think tank)
+    start_url: https://www.bruegel.org/topics/digital
+    link_selector: "a[href*='/publication/'], a[href*='/blog-post/']"
+    limit: 4
+    topic: ai

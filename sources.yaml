@@ -1,0 +1,127 @@
+# sources.yaml
+# Central registry of educational sources for kb_main.py
+# You can pass this file to BOTH --sites and --feeds.
+# - The script's site-crawler reads the top-level `sites` list.
+# - The RSS loader reads the top-level `topics` mapping.
+
+############################################################
+# 1) Sites (start pages) to crawl for article links
+#    - start_url: page to start from
+#    - link_selector: CSS selector for article links (optional; if omitted, a heuristic is used)
+#    - limit: max links to pick from this start page
+#    - topic_hint: optional tag we might use later for routing/analytics
+############################################################
+sites:
+  # --- EU / policy / regulation ---
+  - start_url: https://digital-strategy.ec.europa.eu/en/policies/eu-ai-act
+    link_selector: "main a"
+    limit: 6
+    topic_hint: ai
+
+  - start_url: https://artificialintelligenceact.eu/
+    link_selector: "a[href*='article'], a[href*='explained'], nav a"
+    limit: 8
+    topic_hint: ai
+
+  - start_url: https://www.enisa.europa.eu/topics
+    link_selector: "a[href*='/topics/'], a[href*='/news/']"
+    limit: 8
+    topic_hint: cybersecurity
+
+  - start_url: https://www.edpb.europa.eu/news_en
+    link_selector: ".view-content a"
+    limit: 6
+    topic_hint: privacy
+
+  - start_url: https://www.esma.europa.eu/policy-activities/markets-crypto-assets-mica
+    link_selector: "main a"
+    limit: 6
+    topic_hint: blockchain
+
+  # --- Standards & frameworks ---
+  - start_url: https://csrc.nist.gov/publications/sp
+    link_selector: "a[href*='/publications/detail/']"
+    limit: 10
+    topic_hint: cybersecurity
+
+  - start_url: https://www.nist.gov/itl/ai-risk-management-framework
+    link_selector: "main a"
+    limit: 6
+    topic_hint: ai
+
+  - start_url: https://www.iso.org/committee/6794475/x/catalogue/
+    link_selector: "a[href*='/standard/']"
+    limit: 6
+    topic_hint: ai
+
+  # --- Cybersecurity orgs / best practice ---
+  - start_url: https://www.cisa.gov/news-events
+    link_selector: "a[href*='/newsroom/'], a[href*='/alerts/'], a[href*='/blog/']"
+    limit: 8
+    topic_hint: cybersecurity
+
+  - start_url: https://owasp.org/www-project-top-ten/
+    link_selector: "main a"
+    limit: 5
+    topic_hint: cybersecurity
+
+  - start_url: https://cloudsecurityalliance.org/blog
+    link_selector: "a[href*='/blog/']"
+    limit: 8
+    topic_hint: cybersecurity
+
+  # --- AI engineering / MLOps (vendor-neutral leaning) ---
+  - start_url: https://huggingface.co/blog
+    link_selector: "a[href*='/blog/']"
+    limit: 8
+    topic_hint: ai
+
+  - start_url: https://mlops.community/content/
+    link_selector: "a[href*='/content/']"
+    limit: 6
+    topic_hint: ai
+
+  # --- Blockchain (EU & enterprise) ---
+  - start_url: https://www.ecb.europa.eu/paym/digital_euro/html/index.en.html
+    link_selector: "main a"
+    limit: 6
+    topic_hint: blockchain
+
+  - start_url: https://blog.chain.link/
+    link_selector: "a[href*='/blog/']"
+    limit: 6
+    topic_hint: blockchain
+
+############################################################
+# 2) RSS feeds grouped by topic
+#    - Provide real RSS/Atom feed URLs where possible.
+#    - Leave arrays empty if you prefer site crawling only.
+############################################################
+topics:
+  ai:
+    # Examples (verify/update as needed)
+    - https://feeds.feedburner.com/huggingface
+    - https://openmlsys.github.io/feed.xml
+    - https://mlops.community/feed/         # may redirect; okay
+
+  cybersecurity:
+    - https://www.cisa.gov/cybersecurity-advisories/all.xml
+    - https://www.enisa.europa.eu/news/rss
+    - https://krebsonsecurity.com/feed/     # general security news
+
+  blockchain:
+    - https://blog.chain.link/feed/
+    - https://ethereum.org/en/feed.xml      # general ecosystem articles
+
+  privacy:
+    - https://www.edpb.europa.eu/rss_en
+    - https://ico.org.uk/feed/              # UK ICO updates (good for comparisons)
+
+############################################################
+# 3) Optional notes (ignored by the scripts)
+############################################################
+notes:
+  - "Feel free to append more start_url blocks under 'sites'."
+  - "If a site has a dedicated 'news' or 'blog' section, point start_url there for cleaner results."
+  - "Keep 'limit' modest (5–10) to avoid noisy scraping; you can run the tool more frequently."
+  - "You can still add ad-hoc links on the CLI via --source-url https://example.com/post."
