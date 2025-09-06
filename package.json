@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "gen:posts": "node make-component.mjs",
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "gray-matter": "^4.0.3",
+    "prettier": "^3.3.3"
+  }
+}
